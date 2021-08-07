@@ -1,16 +1,35 @@
 <template>
   <div class="home">
     <h1 class="title">Cotizacion del dolar en Argentina</h1>
-    <button @click="loadDollarPrice()">recargar precios</button>
-    <div class="alert" v-show="loading">
-      <h2>cargando</h2>
-    </div>
-    <div class="div-repetido" v-for="(d, i) in listaDolar" :key="`${i}`">
-      <dolar-item
-        :nombre="d.casa.nombre"
-        :compra="d.casa.compra"
-        :venta="d.casa.venta"
-      />
+    <div class="my-3"></div>
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col">
+          <button class="btn btn-primary" @click="loadDollarPrice()">
+            recargar precios
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-info" v-show="loading">
+            <h2>cargando</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="list-group">
+            <dolar-item
+              v-for="(d, i) in listaDolar"
+              :key="`${i}`"
+              :nombre="d.casa.nombre"
+              :compra="d.casa.compra"
+              :venta="d.casa.venta"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
